@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'gaming'%}">Online Games</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'cod'%}">Call of Duty</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'valo'%}">Valorant</a>
+  </li>
+  </ul>
+<hr>
+<h1>Call of Duty Gameplays</h1>
+<br>
+<h5>Uploaded by : Kathan Patel</h5>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gkG_dV1OH-o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+<hr>
+
+
+{% endblock %}

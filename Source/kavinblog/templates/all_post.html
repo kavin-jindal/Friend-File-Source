@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+	      
+
+.vertical { 
+            border-left: 6px solid black; 
+            height: 200px; 
+            position:absolute; 
+            left: 50%; 
+        } 
+
+	li{
+    list-style-type: none;
+}
+</style>
+
+
+
+
+<div class="col-9">
+	<ul>
+	<h1 class='text-white'>All Posts</h1><br><br>
+	{% for post in object_list %}
+
+	
+	<li>
+
+	<div class="card w-100 border border-dark" style="width: 20rem;">
+		<div class="card-body">
+		  <h5 class="card-title"><a href='{% url "article_detail" post.pk%}'>{{ post.title }}</a></h5>
+		  <h6 class="card-subtitle mb-2 text-muted">Uploaded By : {{post.author.username}} on {{ post.post_date}}</h6>
+		  <p class="card-text text-muted">{{ post.excerpt }}</p>
+		  <br>
+		  <p class='card-text'>{{ post.body|safe }}</p>
+		  <a href='{% url "article_detail" post.pk%}'class="card-link">See full Post</a>
+		  <br>
+		
+		  </div>
+		
+		  </div>
+		  
+		  <br>
+		  </li>
+		
+		  
+		  <!--
+		  {% if user.is_authenticated%}
+		  {% if user.id == post.author.id %} -->
+		  <!--
+		  <a href='{% url "update_post" post.pk%}' class="btn btn-primary">Edit</a>
+		  <a href='{% url "delete" post.pk%}' class="btn btn-primary">Edit</a>-->
+		  
+	  
+		
+	
+	
+	  
+<!--
+			{% endif %}
+
+		{% endif %}-->
+		
+<!---->
+{% endfor %}
+</ul>
+
+
+
+
+
+
+<br>
+<br>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

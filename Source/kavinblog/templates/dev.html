@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Meet the Friend File Developers</h1>
+<br>
+<p class='fs-5'>This is the team Friend File has started with.</p>
+<br>
+<hr>
+<h1>Developer Team</h1>
+<br>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://cdn.discordapp.com/attachments/800269388372508692/807547339366727710/360_F_225103684_9opc6FzD29B5K2YMXlOTR1yuSQQemA4m.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>Kavin Jindal</h1> 
+      <p>Owner, Chief Developer</p> 
+      <p>A skilled Python Programmer and a discord developer.Friend File is his first major project which he aims to expand very much.</p>
+    </div>
+  </div>
+</div>
+<br>
+<hr>
+<h1>Beta Testers</h1>
+<p class='fs-5'>The first people to access the website's new features</p>
+<br>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://cdn.discordapp.com/attachments/800269388372508692/811821668787945492/unnamed.jpg" alt="Avatar" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>Vedant Bhalgama</h1> 
+      <p>Learning Hacker, Penetration Tester</p> 
+      <p>A learning but skilled hacker and an aspiring Penetration Tester</p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://cdn.discordapp.com/attachments/800269388372508692/802405585043456050/11d913c39a0aff5067d7ce5b28144eb2.jpg" style="width:300px;height:300px;">
+    </div>
+    <div class="flip-card-back">
+      <h1>Juss Patel</h1> 
+      <p>Programmer</p> 
+      <p>Another skilled person from the team (dont pay attention to the image)</p>
+    </div>
+  </div>
+</div>
+<br>
+<hr>
+
+</body>
+</html>
+
+
+
+{% endblock %}

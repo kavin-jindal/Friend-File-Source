@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1 class="text-white"> User Profile </h1>
+
+<div class="card mb-3 bg-dark text-white border-white" style="max-width: 540px;">
+		<div class="row g-0">
+		  <div class="col-md-4">
+			  {% if page_user.user.profile.profile_pic %}
+			<img src="{{ page_user.user.profile.profile_pic.url }} " width="150" height="150" alt="profile_pic" class='rounded-circle'>
+			{% else %}
+			<img src="{% static 'kavinblog/images/usericon.png' %} " width="150" height="150" alt="profile_pic">
+
+			{% endif %}
+		  </div>
+		  <div class="col-md-8">
+			<div class="card-body">
+			  <h5 class="card-title text-white">{{ page_user.user.first_name}} {{ page_user.user.last_name }} {{ page_user.user.profile.verified }}</h5>
+			  
+			  <h6 class="card-title">@{{ page_user.user }}</h6>
+
+			  <p class="card-text">{{ page_user.user.profile.bio }}</p>
+        <small class='text-muted'>Links</small><br>
+        {% if page_user.user.profile.website_url %}
+        <small><a href='{{ page_user.user.profile.website_url }}'> Website</a></small>
+        {% else %}
+        {% endif %}
+        {% if page_user.user.profile.twitter_url %}
+        <small><a href='{{ page_user.user.profile.twitter_url }}'>Twitter</a></small>
+        {% else %}
+        {% endif %}
+        {% if page_user.user.profile.instagram_url %}
+        <small><a href='{{ page_user.user.profile.instagram_url }}'>Instagram</a></small>
+        {% else %}
+        {% endif %}
+        {% if page_user.user.profile.facebook_url %}
+        <small><a href='{{ page_user.user.profile.facebook_url }}'>Facebook</a></small>
+        {% else %}
+        {% endif %}
+
+        <a href=''></a>
+			  
+			</div>
+		  </div>
+		</div>
+    </div>
+
+<p>{{ page.user.user.post }}</p>
+
+
+{% endblock %}

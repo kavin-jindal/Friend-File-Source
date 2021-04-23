@@ -1,0 +1,285 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+
+  
+  
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Friend File</title>
+  </head>
+  <body class='bg-dark'>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">Friend File</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'all_blogs'%}">Blog</a>
+        </li>
+        <li class="nav-item dropdown">
+          {% if cat_menu %}
+          <!--Category -->
+          
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for item in cat_menu %}
+            <a class="dropdown-item" href="{% url 'category' item %}">{{ item }}<br></a>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'category_list'%}">Categories</a>
+          </li>
+        {% endif %}
+        {% if user.is_authenticated%}
+        {% if user.profile.id %}
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'add_post'%}">Add Post</a>
+          </li>
+          {% else %}
+          {% endif %}
+          <!--
+          <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'edit_profile'  %}">Edit Account</a></li>
+      {% if user.profile.id %}
+      <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a></li>
+      <li><a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile</a></li>
+      {% else %}
+      <li><a class="dropdown-item" href="{% url 'create_prof_page' %}">Create Profile</a></li>
+      {% endif %}-->
+      
+
+      
+    </ul>
+  </li>
+          <!--<li class="nav-item">
+          <a class="nav-link" href="{% url 'add_cat'%}">Add Category</a>
+          </li>-->
+
+          
+          
+
+        {% else %}
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'register'%}">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login'%}">Login</a>
+          </li>
+          
+          
+
+        {% endif%}
+        
+
+        <!--
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Website
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'developer'%}">Developers</a></li>
+            <li><a class="dropdown-item" href="{% url 'devblog'%}">Updates</a></li>
+            <li><a class="dropdown-item" href="{% url 'blog'%}">Dev Blog</a></li>
+            <li><a class="dropdown-item" href="{% url 'about'%}">About</a></li>
+            <li><hr class="dropdown-divider"></li>
+            
+            
+          </ul>
+        </li>--><!--
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Youtube
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'tech'%}">Technology</a></li>
+            <li><a class="dropdown-item" href="{% url 'cyber'%}">CyberSecurity</a></li>
+            <li><a class="dropdown-item" href="{% url 'gaming'%}">Gaming</a></li>
+            <li><hr class="dropdown-divider"></li>
+
+            
+          </ul>
+        </li>-->
+       
+        
+        
+        
+          
+
+        
+        
+
+        
+        
+        
+      
+
+      
+    </div>
+    {% if user.is_authenticated %}
+         <ul class="navbar-nav mr-auto">
+           <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">{{ user.first_name }}</a>
+    <ul class="dropdown-menu dropdown-menu-left">
+      <li><a class="dropdown-item" href="{% url 'edit_profile'  %}">Edit Account</a></li>
+      {% if user.profile.id %}
+      <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a></li>
+      <li><a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">Show Profile</a></li>
+      {% else %}
+      <li><a class="dropdown-item" href="{% url 'create_prof_page' %}">Create Profile</a></li>
+      {% endif %}
+      {% else %}
+      {% endif %}
+      
+           
+
+
+
+    </ul>
+         
+
+     
+  </div>
+</nav>
+
+
+{% if user.is_authenticated%}
+<br>
+<div class='container'>
+	
+	<div class="row">
+	<div class="col">
+		<div class="card bg-dark border-white" style="width: 18rem;">
+			<div class="card-body">
+        {% if user.profile.profile_pic %}
+			<img src="{{ user.profile.profile_pic.url }} " width="250" height="250" alt="profile_pic" class='rounded-circle'>
+			{% else %}
+			<img src="{% static 'kavinblog/images/usericon.png' %} " width="250" height="250" alt="profile_pic">
+
+			{% endif %}
+      <br><br>
+			<h5 class="card-title text-white">@{{ user.username }}</h5><hr>
+      {% if user.profile.verified %}
+			  <h5 class="card-title text-white">{{ user.first_name }} {{ user.last_name }}{{ user.profile.verified }}</h5>
+      {% else %}
+        <h5 class="card-title text-white">{{ user.first_name }} {{ user.last_name }}</h5>
+        {% endif %}
+			  <h6 class="card-subtitle mb-2 text-white">{{ user.email }}</h6>
+			  <!--<p class="card-text">{{ user.bio }}</p>-->
+			  <br>
+        {% if user.profile.id %}
+        <small><a href='{% url "show_profile_page" user.profile.id %}' class='text-white'>Visit Profile</a></small><br>
+        {% else %}
+        <small><a href='{% url "create_prof_page" %}' class='text-white'>Create Profile Page</a></small><br>
+        {% endif %}
+			  <small><a href="{% url 'edit_profile'%}" class="card-link text-white">Edit Account</a></small><br>
+        <small><a href="{% url 'logout'%}" class="card-link text-white">Logout</a></small>
+			  <br>
+			  <hr class='text-white'>
+			</div>
+      
+		  </div><br><br>
+		  <div class='row-2'>
+        <div class='col'>
+<div class="card bg-dark border-white" style="width: 18rem;">
+  <div class="card-header text-white">
+    Post Categories
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item bg-dark">
+      <a class='text-white' href='https://django-template-3.kavinjindal.repl.co/category/tech/'>Technology</a></li>
+      <li class="list-group-item bg-dark">
+      <a class='text-white' href='https://django-template-3.kavinjindal.repl.co/category/Ethical%20Hacking/'>Ethical Hacking</a></li>
+      <li class="list-group-item bg-dark">
+      <a class='text-white' href='https://django-template-3.kavinjindal.repl.co/category/Youtube/'>Youtube</a></li>
+</div>
+         
+  </ul><br><br>
+  <hr>
+  <h3 class='text-white'>Videos</h3>
+  
+    <div class='col-6 border-white'>
+      
+<iframe width="280" height="170" src="https://www.youtube.com/embed/8_psGXrdeik" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+
+<iframe width="280" height="170" src="https://www.youtube.com/embed/fOWdVdyQBBs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe width="280" height="170" src="https://www.youtube.com/embed/n6W08B10beU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div></div>
+	  </div>
+    {% if user.profile.id %}
+    
+  {% else %}
+  <div class='container col-9'>
+  <h1 class='text-white' >Create your profile to start posting on Friend File</h1>
+  
+  <a href='{% url "create_prof_page" %}' class='text-white'>Create Profile</a>
+  <hr class='text-white'>
+  <br>
+  {% endif %}
+    
+	  <!--<hr style="width: 0.6px; height: 10000px; display: inline-block;">-->
+	  {% else %}
+	  <div class='container'>
+      <br>
+		<div class="row">
+		<div class="col">
+			<div class="card bg-dark" style="width: 18rem;">
+				<div class="card-body">
+				  <a href="{% url 'login'%}" class='text-white'>Login</a> or 
+				  <a href="{% url 'register'%}" class='text-white'>Register</a>
+          
+				  
+				  
+				  <hr class='text-white'>
+				</div>
+			  </div>
+			  
+		  </div>
+      
+{% endif %}
+
+    
+    <div class='container col-9'>
+     
+    {% block content %}
+
+    {% endblock %} 
+    
+    <br>
+    
+<br>
+<hr class='text-white'>
+<center><h3 class='text-white'>Friend File - Copyright 2021</h3></center>
+<br>
+
+    </div> 
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

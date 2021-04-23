@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if category_posts %}
+
+<h1 class='text-white'>{{ cats }} Category</h1>
+<ul>
+{% for post in category_posts %}
+<li><a href='{% url "article_detail" post.pk%}' class='text-white'>{{ post.title }} - </a></small><a class='text-white'>  {{ post.post_date }}</a> - <a class='text-white'> by {{ post.author.username }}</a>
+
+	    {% if user.is_authenticated%}
+	    {% if user.id == post.author.id %}
+
+		<small><a href='{% url "update_post" post.pk%}' class='text-white'>(Edit)</a>
+		<a href='{% url "delete" post.pk%}' class='text-white'>(Delete)
+	</li>
+			{% endif %}
+
+		{% endif %}
+
+{% endfor %}
+</ul>
+
+{% else %}
+<h2>This page doesnt exist</h2>
+{% endif %}
+{% endblock %}

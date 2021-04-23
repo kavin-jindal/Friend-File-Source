@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'gaming'%}">Online Games</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'cod'%}">Call of Duty</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'pentesting'%}">Valorant</a>
+  </li>
+  </ul>
+<hr>
+<h1>Valorant Videos</h1>
+<br>
+<h3>THE VALORANT MONTAGE ll MY FIRST MONTAGE</h3>
+<h5>Uploaded by : BLACkKWIZAR</h5>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QdOJqAIuy0o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+<hr>
+<h3>VALORANT 1V4 CLUTCH ll SOMETHING COMING SOON.......</h3>
+<h5>Uploaded by : BLACkKWIZAR</h5>
+<br>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/17PkdA384s8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+<hr>
+
+
+{% endblock %}
